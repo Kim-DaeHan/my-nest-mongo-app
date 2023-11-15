@@ -14,8 +14,8 @@ jobs:
 
       - name: Set Up Git
         run: |
-          git config user.name "Kim-DaeHan"
-          git config user.email "45507601+Kim-DaeHan@users.noreply.github.com"
+          git config user.name "${{ github.actor }}"
+          git config user.email "${{ github.actor }}@users.noreply.github.com"
 
       - name: Copy Code to B Repository
         run: |

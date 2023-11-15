@@ -19,7 +19,8 @@ jobs:
 
       - name: Copy Code to B Repository
         run: |
-          Get-ChildItem -Path $env:GITHUB_WORKSPACE\* | Copy-Item -Destination C:\Users\KDH\Documents\GitHub\gitActionsTest -Recurse -Force
+          Get-ChildItem -Path $env:GITHUB_WORKSPACE\* -Recurse
+          Copy-Item -Path $env:GITHUB_WORKSPACE\* -Destination C:\Users\KDH\Documents\GitHub\gitActionsTest -Recurse -Force
 
       - name: Commit and Push to B Repository
         run: |

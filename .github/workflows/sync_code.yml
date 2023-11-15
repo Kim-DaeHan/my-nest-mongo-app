@@ -23,10 +23,10 @@ jobs:
           echo "Current working directory: $PWD"
 
           # git clone을 사용하여 다른 레포지토리를 복제
-          git clone https://github.com/Kim-DaeHan/gitActionsTest.git /path/to/B_REPO/
+          git clone https://github.com/Kim-DaeHan/gitActionsTest.git /home/runner/gitActionsTest/
 
           # 복제한 레포지토리로 이동
-          cd /path/to/B_REPO/
+          cd /home/runner/gitActionsTest/
 
           # 현재 작업 디렉토리에 있는 파일과 디렉토리를 복사
           cp -r $GITHUB_WORKSPACE/* ./
@@ -35,5 +35,5 @@ jobs:
           git add .
           git commit -m "Sync code from Repository A"
 
-          # 변경사항을 B_REPO 레포지토리로 푸시
+          # 변경사항을 gitActionsTest 레포지토리로 푸시
           git push origin master

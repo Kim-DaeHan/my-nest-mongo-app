@@ -5,26 +5,27 @@ name: Sync Code
 
 on:
   push:
-    branches: [ "master" ]
+    branches: ['master']
 
 jobs:
   sync_code:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout Source Repository
-      uses: actions/checkout@v2
+      - name: Checkout Source Repository
+        uses: actions/checkout@v2
 
-    - name: Set Up Git
-      run: |
-        git config user.name "${{ github.actor }}"
-        git config user.email "${{ github.actor }}@users.noreply.github.com"
+      - name: Set Up Git
+        run: |
+          git config user.name "${{ github.actor }}"
+          git config user.email "${{ github.actor }}@users.noreply.github.com"
 
-    - name: Push Changes to B Repository
-      run: |        
-        B_REPO="Kim-DaeHan/gitActionsTest"
-        B_BRANCH="master"
-        
-        git remote add target_repo "https://github.com/$B_REPO.git"
+      - name: Push Changes to B Repository
+        run: |
+          B_REPO="Kim-DaeHan/gitActionsTest"
+          B_BRANCH="master"
+          PAT_TOKEN="${{ secrets.PAT }}"
 
-        git push target_repo HEAD:$B_BRANCH
+          git remote add target_repo "https://github.com/$B_REPO.git"
+
+          git push target_repo HEAD:$B_BRANCH --follow-tags -f -u $PAT_TOKEN

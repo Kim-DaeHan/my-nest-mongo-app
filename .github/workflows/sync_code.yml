@@ -6,7 +6,7 @@ on:
 
 jobs:
   sync_code:
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
 
     steps:
       - name: Checkout Source Repository
@@ -19,7 +19,7 @@ jobs:
 
       - name: Copy Code to B Repository
         run: |
-          cp -r $GITHUB_WORKSPACE/* C:\Users\KDH\Documents\GitHub\gitActionsTest
+          Get-ChildItem -Path $env:GITHUB_WORKSPACE\* | Copy-Item -Destination C:\Users\KDH\Documents\GitHub\gitActionsTest -Recurse -Force
 
       - name: Commit and Push to B Repository
         run: |

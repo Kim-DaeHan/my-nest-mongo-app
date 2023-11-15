@@ -14,8 +14,8 @@ jobs:
 
       - name: Set Up Git
         run: |
-          git config user.name "${{ github.actor }}"
-          git config user.email "${{ github.actor }}@users.noreply.github.com"
+          git config user.name "Kim-DaeHan"
+          git config user.email "45507601+Kim-DaeHan@users.noreply.github.com"
 
       - name: Copy Code to B Repository
         run: |
@@ -30,6 +30,10 @@ jobs:
 
           # 현재 작업 디렉토리에 있는 파일과 디렉토리를 복사
           cp -r $GITHUB_WORKSPACE/* ./
+
+          # Git 사용자 정보 설정
+          git config user.name "${{ github.actor }}"
+          git config user.email "${{ github.actor }}@users.noreply.github.com"
 
           # 변경사항을 추가하고 커밋
           git add .

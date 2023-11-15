@@ -6,7 +6,7 @@ on:
 
 jobs:
   sync_code:
-    runs-on: windows-latest
+    runs-on: ubuntu-latest
 
     steps:
       - name: Checkout Source Repository
@@ -19,11 +19,21 @@ jobs:
 
       - name: Copy Code to B Repository
         run: |
-          Get-ChildItem -Path $env:GITHUB_WORKSPACE\* | Copy-Item -Destination C:\Users\KDH\Documents\GitHub\gitActionsTest -Recurse -Force
+          # GitHub Actions의 현재 작업 디렉토리 확인
+          echo "Current working directory: $PWD"
 
-      - name: Commit and Push to B Repository
-        run: |
-          cd C:\Users\KDH\Documents\GitHub\gitActionsTest
+          # git clone을 사용하여 다른 레포지토리를 복제
+          git clone https://github.com/Kim-DaeHan/gitActionsTest.git /path/to/B_REPO/
+
+          # 복제한 레포지토리로 이동
+          cd /path/to/B_REPO/
+
+          # 현재 작업 디렉토리에 있는 파일과 디렉토리를 복사
+          cp -r $GITHUB_WORKSPACE/* ./
+
+          # 변경사항을 추가하고 커밋
           git add .
           git commit -m "Sync code from Repository A"
+
+          # 변경사항을 B_REPO 레포지토리로 푸시
           git push origin master

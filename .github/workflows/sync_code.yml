@@ -20,6 +20,10 @@ jobs:
           git config user.name "${{ github.actor }}"
           git config user.email "${{ github.actor }}@users.noreply.github.com"
 
+      - name: Debug Local Changes
+        run: |
+          git status
+
       - name: Push Changes to B Repository
         run: |
           B_REPO="Kim-DaeHan/gitActionsTest"
@@ -28,4 +32,5 @@ jobs:
 
           git remote add target_repo "https://github.com/$B_REPO.git"
 
+          # Use the Personal Access Token for authentication
           git push target_repo HEAD:$B_BRANCH --follow-tags -f -u $PAT_TOKEN

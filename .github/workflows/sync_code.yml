@@ -10,7 +10,7 @@ jobs:
 
     steps:
       - name: Checkout Source Repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
 
       - name: Set Up Git
         run: |
@@ -30,14 +30,14 @@ jobs:
           git clone https://github.com/Kim-DaeHan/gitActionsTest.git /home/runner/gitActionsTest/
 
           # 복제한 레포지토리로 이동
-          cd /home/runner/gitActionsTest/
+          # cd /home/runner/gitActionsTest/
 
-          # 현재 작업 디렉토리에 있는 파일과 디렉토리를 복사
-          cp -r $GITHUB_WORKSPACE/* ./
+          # # 현재 작업 디렉토리에 있는 파일과 디렉토리를 복사
+          # cp -r $GITHUB_WORKSPACE/* ./
 
-          # 변경사항을 추가하고 커밋
-          git add .
-          git commit -m "Sync code from Repository A"
+          # # 변경사항을 추가하고 커밋
+          # git add .
+          # git commit -m "Sync code from Repository A"
 
-          # 변경사항을 gitActionsTest 레포지토리로 푸시
-          git push origin master
+          # # 변경사항을 gitActionsTest 레포지토리로 푸시
+          # git push origin master

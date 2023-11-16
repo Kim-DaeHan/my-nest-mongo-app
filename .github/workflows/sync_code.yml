@@ -19,8 +19,7 @@ jobs:
           echo "Current working directory: $PWD"
 
           # git clone을 사용하여 다른 레포지토리를 복제
-          # git clone https://$PAT_TOKEN@github.com/Kim-DaeHan/gitActionsTest.git /home/runner/gitActionsTest/
-          git clone https://github.com/Kim-DaeHan/gitActionsTest.git /home/runner/gitActionsTest/
+          git clone https://$PAT_TOKEN@github.com/Kim-DaeHan/gitActionsTest.git /home/runner/gitActionsTest/
 
           # 복제한 레포지토리로 이동
           cd /home/runner/gitActionsTest/

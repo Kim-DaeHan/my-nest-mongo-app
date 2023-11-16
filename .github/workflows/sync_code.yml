@@ -14,7 +14,6 @@ jobs:
 
       - name: Copy Code to B Repository
         run: |
-          PAT_TOKEN="${{ secrets.PAT }}"
           # GitHub Actions의 현재 작업 디렉토리 확인
           echo "Current working directory: $PWD"
 
@@ -36,3 +35,5 @@ jobs:
 
           # 변경사항을 gitActionsTest 레포지토리로 푸시
           git push origin master
+        env:
+          PAT_TOKEN: ${{ secrets.PAT }}

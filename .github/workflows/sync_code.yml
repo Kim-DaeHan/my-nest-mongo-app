@@ -16,7 +16,7 @@ jobs:
         run: |
           PAT_TOKEN="${{ secrets.PAT }}"
           # GitHub Actions의 현재 작업 디렉토리 확인
-          echo "Current working directory: $PWD"
+          echo "Current working directory: $PAT_TOKEN"
 
           # git clone을 사용하여 다른 레포지토리를 복제
           git clone https://$PAT_TOKEN@github.com/Kim-DaeHan/gitActionsTest.git /home/runner/gitActionsTest/
@@ -29,8 +29,6 @@ jobs:
 
           git config user.name "${{ github.actor }}"
           git config user.email "${{ github.actor }}@users.noreply.github.com"
-
-          git config --list
 
           # 변경사항을 추가하고 커밋
           git add .

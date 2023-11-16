@@ -32,9 +32,9 @@ jobs:
 
           git config --list
 
-          # # 변경사항을 추가하고 커밋
-          # git add .
-          # git commit -m "Sync code from Repository A"
+          # 변경사항을 추가하고 커밋
+          git add .
+          git commit -m "Sync code from Repository A"
 
-          # # 변경사항을 gitActionsTest 레포지토리로 푸시
-          # git push origin master
+          # 변경사항을 gitActionsTest 레포지토리로 푸시
+          git push origin master

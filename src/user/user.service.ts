@@ -1,31 +1,25 @@
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
+import { User, UserDocument } from './schemas/user.schema';
 import { Model } from 'mongoose';
-import { User } from './schemas/user.schema';
+import { CreateUserDto } from './dto/create-user.dto';
+import { ServiceException } from 'common/serviceException';
 
 @Injectable()
 export class UserService {
-  constructor(
-    @InjectModel(User.name) private readonly userModel: Model<User>,
-  ) {}
+  constructor(@InjectModel(User.name) private userModel: Model<UserDocument>) {}
 
   async findAll(): Promise<User[]> {
-    // 모든 데이터 조회
-    return this.userModel.find().exec();
+    const userList = await this.userModel.find().exec();
+    // throw new SyntaxError('문법 에러');
+    throw new ServiceException(400, 'adslkfjladsf');
+    return userList;
   }
 
-  async findOneById(id: string): Promise<User> {
-    // ID를 기반으로 데이터 조회
-    return this.userModel.findById(id).exec();
-  }
+  async create(createUserDto: CreateUserDto): Promise<User> {
+    const createdUser = new this.userModel(createUserDto);
+    await createdUser.save();
 
-  async findOneByName(name: string): Promise<User> {
-    // 이름을 기반으로 데이터 조회
-    return this.userModel.findOne({ name }).exec();
-  }
-
-  async create(createTestDto: any): Promise<User> {
-    const createdTest = new this.userModel(createTestDto);
-    return createdTest.save();
+    return createdUser;
   }
 }

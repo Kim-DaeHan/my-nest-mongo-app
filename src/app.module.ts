@@ -9,6 +9,7 @@ import { LoggerMiddleware } from './logger/logger.middleware';
 @Module({
   imports: [
     MongooseModule.forRoot('mongodb://localhost:27017/Test'),
+    // MongooseModule.forRoot('mongodb://host.docker.internal:27017/Test'),
     TestModule,
     UserModule,
   ],
